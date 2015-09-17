@@ -19,7 +19,13 @@ class Vparser_yinyuetai{
 		return $vUrl;
 	}
 	
-	public function getDownloadByUrl(){
+	public function getDownloadByUrl($url){
+		$vid = "";
+		preg_match_all('|http://\w+.yinyuetai.com/video/(\d+)|', $url, $vidArr);
+		if(count($vidArr)>1){
+			return $this->getDownloadById($vidArr[1][0]);
+		}
 		
 	}
 }
+

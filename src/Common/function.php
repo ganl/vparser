@@ -17,3 +17,4 @@ function fetch($url){
 	curl_close($ch);
 	return $data;
 }
+
