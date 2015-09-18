@@ -7,8 +7,8 @@ $yyt = Vparser::load(Vparser::MODULE_YINYUETAI);
 echo '<pre>';
 
 //http://v.yinyuetai.com/video/2371147?f=SY-MKDT-MVSB-1
-$videoById = $yyt->getDownloadById('2371147');
-var_dump($videoById);
+// $videoById = $yyt->getDownloadById('2371147');
+// var_dump($videoById);
 // array(4) {
 //   [0]=>
 //   string(102) "http://hc.yinyuetai.com/uploads/videos/common/9166014FCEBFCEA915CF057B69935D8D.flv?sc=3978e1db4d5620fc"
@@ -20,8 +20,8 @@ var_dump($videoById);
 //   string(102) "http://sh.yinyuetai.com/uploads/videos/common/0CF3014FCECC8DC1BE690EEACA9D4849.mp4?sc=97f6b23a9ea874b5"
 // }
 
-$videoByUrl = $yyt->getDownloadByUrl("http://v.yinyuetai.com/video/2372393?f=SY-MKDT-MVSB-1");
-var_dump($videoByUrl);
+// $videoByUrl = $yyt->getDownloadByUrl("http://v.yinyuetai.com/video/2372393?f=SY-MKDT-MVSB-1");
+// var_dump($videoByUrl);
 // array(3) {
 // 	[0]=>
 // 	string(102) "http://hc.yinyuetai.com/uploads/videos/common/BA60014FD658FD88DA07218ED1BCC4D6.flv?sc=1eaa8461b1951dd7"
@@ -31,3 +31,18 @@ var_dump($videoByUrl);
 // 	string(102) "http://he.yinyuetai.com/uploads/videos/common/0764014FD67AC434D0A85DF7E07486FE.flv?sc=503c9cf46f4b95cf"
 // }
 
+// http://v.xiaokaxiu.com/v/2H1eK2UCug-T-NcG9KN2rA__.html
+$miaopai = Vparser::load(Vparser::MODULE_MIAOPAI);
+
+$videoById = $miaopai->getDownloadById("2H1eK2UCug-T-NcG9KN2rA__");
+var_dump($videoById);
+// string(73) "http://gslb.miaopai.com/stream/2H1eK2UCug-T-NcG9KN2rA__.mp4?vend=miaopai&"
+
+$videoById = $miaopai->getDownloadByUrl("http://v.xiaokaxiu.com/v/2H1eK2UCug-T-NcG9KN2rA__.html");
+var_dump($videoById);
+// string(73) "http://gslb.miaopai.com/stream/2H1eK2UCug-T-NcG9KN2rA__.mp4?vend=miaopai&"
+
+
+$videoById = $miaopai->getDownloadByUrl("http://www.miaopai.com/show/~7sCwx2y5qD53Ff~tcguUQ__.htm");
+var_dump($videoById);
+// string(73) "http://gslb.miaopai.com/stream/~7sCwx2y5qD53Ff~tcguUQ__.mp4?vend=miaopai&"

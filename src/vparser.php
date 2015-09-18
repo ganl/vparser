@@ -11,6 +11,12 @@ class Vparser{
 	 */
 	const MODULE_YINYUETAI = 'yinyuetai';
 	
+	/**
+	 * 秒拍、小咖秀
+	 * @var unknown
+	 */
+	const MODULE_MIAOPAI = 'miaopai';
+	
 	public static function load($moduleName){
 		$moduleFile = VPARSER_ROOT.'/Module/'.$moduleName.'.php';
 	
