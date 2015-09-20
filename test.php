@@ -2,10 +2,10 @@
 error_reporting(E_ALL);
 require_once './src/vparser.php';
 
-$yyt = Vparser::load(Vparser::MODULE_YINYUETAI);
-
 echo '<pre>';
 
+//---------------------------------------------------------------------------------------------------------------------------------
+$yyt = Vparser::load(Vparser::MODULE_YINYUETAI);
 //http://v.yinyuetai.com/video/2371147?f=SY-MKDT-MVSB-1
 // $videoById = $yyt->getDownloadById('2371147');
 // var_dump($videoById);
@@ -31,18 +31,55 @@ echo '<pre>';
 // 	string(102) "http://he.yinyuetai.com/uploads/videos/common/0764014FD67AC434D0A85DF7E07486FE.flv?sc=503c9cf46f4b95cf"
 // }
 
+
+//---------------------------------------------------------------------------------------------------------------------------------
 // http://v.xiaokaxiu.com/v/2H1eK2UCug-T-NcG9KN2rA__.html
 $miaopai = Vparser::load(Vparser::MODULE_MIAOPAI);
 
-$videoById = $miaopai->getDownloadById("2H1eK2UCug-T-NcG9KN2rA__");
-var_dump($videoById);
+// $videoById = $miaopai->getDownloadById("2H1eK2UCug-T-NcG9KN2rA__");
+// var_dump($videoById);
 // string(73) "http://gslb.miaopai.com/stream/2H1eK2UCug-T-NcG9KN2rA__.mp4?vend=miaopai&"
 
-$videoById = $miaopai->getDownloadByUrl("http://v.xiaokaxiu.com/v/2H1eK2UCug-T-NcG9KN2rA__.html");
-var_dump($videoById);
+// $videoById = $miaopai->getDownloadByUrl("http://v.xiaokaxiu.com/v/2H1eK2UCug-T-NcG9KN2rA__.html");
+// var_dump($videoById);
 // string(73) "http://gslb.miaopai.com/stream/2H1eK2UCug-T-NcG9KN2rA__.mp4?vend=miaopai&"
 
 
-$videoById = $miaopai->getDownloadByUrl("http://www.miaopai.com/show/~7sCwx2y5qD53Ff~tcguUQ__.htm");
-var_dump($videoById);
+// $videoById = $miaopai->getDownloadByUrl("http://www.miaopai.com/show/~7sCwx2y5qD53Ff~tcguUQ__.htm");
+// var_dump($videoById);
 // string(73) "http://gslb.miaopai.com/stream/~7sCwx2y5qD53Ff~tcguUQ__.mp4?vend=miaopai&"
+
+
+//---------------------------------------------------------------------------------------------------------------------------------
+//http://news.cntv.cn/2015/09/19/VIDE1442661656471755.shtml
+
+$cntv = Vparser::load(Vparser::MODULE_CNTV);
+$videoByUrl = $cntv->getDownloadByUrl("http://news.cntv.cn/2015/09/19/VIDE1442661656471755.shtml");
+var_dump($videoByUrl);
+// array(1) {
+// 	[0]=>
+// 	array(3) {
+// 		["image"]=>
+// 		string(84) "http://p4.img.cctvpic.com/fmspic/2015/09/19/cdaae8023379407eb547870805762508-180.jpg"
+// 		["url"]=>
+// 		string(115) "http://vod.cntv.lxdns.com/flash/mp4video45/TMS/2015/09/19/cdaae8023379407eb547870805762508_h264418000nero_aac32.mp4"
+// 		["duration"]=>
+// 		string(3) "146"
+// 	}
+// }
+
+
+//http://news.cntv.cn/2015/09/20/VIDE1442722138330797.shtml ----> cdaae8023379407eb547870805762508
+$videoById = $cntv->getDownloadById("cdaae8023379407eb547870805762508");
+var_dump($videoById);
+// array(1) {
+// 	[0]=>
+// 	array(3) {
+// 		["image"]=>
+// 				string(84) "http://p4.img.cctvpic.com/fmspic/2015/09/19/cdaae8023379407eb547870805762508-180.jpg"
+// 		["url"]=>
+// 				string(115) "http://vod.cntv.lxdns.com/flash/mp4video45/TMS/2015/09/19/cdaae8023379407eb547870805762508_h264418000nero_aac32.mp4"
+// 		["duration"]=>
+// 				string(3) "146"
+// 	}
+// }

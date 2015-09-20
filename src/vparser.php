@@ -17,6 +17,12 @@ class Vparser{
 	 */
 	const MODULE_MIAOPAI = 'miaopai';
 	
+	/**
+	 * CNTV
+	 * @var unknown
+	 */
+	const MODULE_CNTV = 'cntv';
+	
 	public static function load($moduleName){
 		$moduleFile = VPARSER_ROOT.'/Module/'.$moduleName.'.php';
 	
