@@ -54,8 +54,8 @@ $miaopai = Vparser::load(Vparser::MODULE_MIAOPAI);
 //http://news.cntv.cn/2015/09/19/VIDE1442661656471755.shtml
 
 $cntv = Vparser::load(Vparser::MODULE_CNTV);
-$videoByUrl = $cntv->getDownloadByUrl("http://news.cntv.cn/2015/09/19/VIDE1442661656471755.shtml");
-var_dump($videoByUrl);
+// $videoByUrl = $cntv->getDownloadByUrl("http://news.cntv.cn/2015/09/19/VIDE1442661656471755.shtml");
+// var_dump($videoByUrl);
 // array(1) {
 // 	[0]=>
 // 	array(3) {
@@ -70,8 +70,8 @@ var_dump($videoByUrl);
 
 
 //http://news.cntv.cn/2015/09/20/VIDE1442722138330797.shtml ----> cdaae8023379407eb547870805762508
-$videoById = $cntv->getDownloadById("cdaae8023379407eb547870805762508");
-var_dump($videoById);
+// $videoById = $cntv->getDownloadById("cdaae8023379407eb547870805762508");
+// var_dump($videoById);
 // array(1) {
 // 	[0]=>
 // 	array(3) {
@@ -83,3 +83,27 @@ var_dump($videoById);
 // 				string(3) "146"
 // 	}
 // }
+
+//--------------------------------------------------------------------------------------------------------------
+// http://www.xiami.com/song/1774621640
+// http://www.xiami.com/song/1773346501
+
+$xiami = Vparser::load(Vparser::MODULE_XIAMI);
+$musicById = $xiami->getDownloadById("1773346501");
+var_dump($musicById);
+// array(2) {
+// 	["src"]=>
+// 		string(129) "http://m5.file.xiami.com/778/778/1602302708/1773346501_15566694_l.mp3?auth_key=9509549247dea67702424bafdc5a93f4-1442966400-0-null"
+// 	["lyric"]=>
+// 		string(58) "http://img.xiami.net/lyric/1/1773346501_14056804704181.lrc"
+// }
+
+$musicByUrl = $xiami->getDownloadByUrl("http://www.xiami.com/song/1774621640");
+var_dump($musicByUrl);
+// array(2) {
+// 	["src"]=>
+// 		string(129) "http://m5.file.xiami.com/21/2021/2100181568/1774621640_58823620_l.mp3?auth_key=c90ba4ea5841282ed91326c84e71c404-1442966400-0-null"
+// 	["lrc"]=>
+// 		string(60) "http://img.xiami.net/lyric/40/1774621640_1442846272_3935.lrc"
+// }
+

@@ -23,6 +23,12 @@ class Vparser{
 	 */
 	const MODULE_CNTV = 'cntv';
 	
+	/**
+	 * xiami
+	 * @var unknown
+	 */
+	const MODULE_XIAMI= 'xiami';
+	
 	public static function load($moduleName){
 		$moduleFile = VPARSER_ROOT.'/Module/'.$moduleName.'.php';
 	
