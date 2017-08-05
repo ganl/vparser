@@ -107,7 +107,7 @@ html, body, #player_wrap{
         </div>
     </div>
 </div>
-<script type="text/javascript" src="./ckplayer/jquery.js"></script>
+<script type="text/javascript" src="./ckplayer/jquery.min.js"></script>
 <script type="text/javascript" src="./ckplayer/main.js"></script>
 <script type="text/javascript" src="./ckplayer/ckplayer.js"></script>
 <script type="text/javascript">
