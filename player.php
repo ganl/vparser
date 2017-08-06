@@ -6,6 +6,12 @@
  * Time: 22:32
  */
 
+/**
+ * vparser/player.php?ad=0&url=http://img.ksbbs.com/asset/Mon_1703/d30e02a5626c066.mp4
+ * vparser/player.php?ad=0&url=http://www.flashls.org/playlists/test_001/stream_1000k_48k_640x360.m3u8
+ * vparser/player.php?ad=1&url=http://v.youku.com/v_show/id_XMjkzNDA5Nzk2OA==.html
+ */
+
 error_reporting(0);
 
 $url = $_GET['url'];
@@ -24,8 +30,12 @@ if (preg_match("/\.m3u8/i", $url, $matches)) {
 }
 
 $auto_play = 1;
-if($_GET['auto'] && $_GET['auto'] == '0'){
+$no_ad = false;
+if(isset($_GET['auto']) && $_GET['auto'] == '0'){
     $auto_play = 0;
+}
+if(isset($_GET['ad']) && $_GET['ad'] == '0'){
+    $no_ad = true;
 }
 
 $proxy = '/vparser/src/faker.php?p=ck&id=[$pat]';
@@ -180,8 +190,10 @@ html, body, #player_wrap{
             //n: '这是提示点的功能，如果不需要删除k和n的值|提示点测试60秒',//提示点文字，跟k配合使用，如 提示点1|提示点2
             wh: '',//宽高比，可以自己定义视频的宽高或宽高比如：wh:'4:3',或wh:'1080:720'
             lv: '0',//是否是直播流，=1则锁定进度栏
+            <?php if(!$no_ad){?>
             loaded: 'loadedHandler',//当播放器加载完成后发送该js函数loaded
             //调用播放器的所有参数列表结束
+            <?php }?>
             //以下为自定义的播放器参数用来在插件里引用的
             my_url: encodeURIComponent(window.top.location.href),//本页面地址
             my_title:encodeURIComponent(window.top.document.title)
