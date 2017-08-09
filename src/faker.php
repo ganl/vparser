@@ -47,6 +47,30 @@ if($url && $url != ""){
                 }
                 break;
             case 'QQ.com':
+                $types = array();
+                foreach ($info['streams'] as $key => $stream){
+                    $types[] = $key;
+                }
+                $xhcs = count($types)-1;
+                $vtype = $types[$xhcs];
+
+                $data['audio_lang'] = $info['streams'][$vtype]['container'];
+                $data['clear'] = $info['streams'][$vtype]['video_profile'];
+                $data['duration'] = '';
+                $data['title'] = $info['title'];
+                $data['size'] = $info['streams'][$vtype]['size'];
+
+                foreach ($info['streams'][$vtype]['src'] as $k => $value) {
+                    $data['url'][$k]["downlink"] = $value;
+                    $data['url'][$k]["size"] = '';
+                    $data['url'][$k]["ts"] = '';
+//                    $data['duration'] += $data['url'][$k]["ts"];
+                }
+                if(isset($_GET['p']) && $_GET['p'] == 'ck'){
+                    getckxml($data);
+                }else{
+                    getcmpxml($data);
+                }
 
                 break;
         }
