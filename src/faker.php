@@ -18,6 +18,9 @@ if($url && $url != ""){
     $output = shell_exec($cmd);
     if($output) {
         $info = json_decode($output, true);
+        if(is_null($info)){
+            $info = json_decode( substr($output, stripos($output, '{')), true);
+        }
         $data = array();
         switch ($info['site']){
             case '优酷 (Youku)':
@@ -47,6 +50,7 @@ if($url && $url != ""){
                 }
                 break;
             case 'QQ.com':
+            case 'Le.com':
                 $types = array();
                 foreach ($info['streams'] as $key => $stream){
                     $types[] = $key;
@@ -55,7 +59,7 @@ if($url && $url != ""){
                 $vtype = $types[$xhcs];
 
                 $data['audio_lang'] = $info['streams'][$vtype]['container'];
-                $data['clear'] = $info['streams'][$vtype]['video_profile'];
+                $data['clear'] = $info['streams'][$vtype]['container'];
                 $data['duration'] = '';
                 $data['title'] = $info['title'];
                 $data['size'] = $info['streams'][$vtype]['size'];
