@@ -14,7 +14,7 @@
 <!--flv格式：  xx.html?videourl=http://img.ksbbs.com/asset/Mon_1704/15868902d399b87.flv-->
 <!--传统m3u8：xx.html?videourl=http://www.flashls.org/playlists/test_001/stream_1000k_48k_640x360.m3u8-->
 <!--hls-m3u8；xx.html?videourl=http://cdn.theoplayer.com/video/star_wars_episode_vii-the_force_awakens_official_comic-con_2015_reel_(2015)/index.m3u8&hls=1-->
-<!--rtmp协议:http://www.chplayer.com/examples ... .lxdns.com/live/hks-->
+<!--rtmp协议: xx.html?videourl=rtmp://live.hkstv.hk.lxdns.com/live/hks-->
 <body>
 <div class="video" style="width: 100%; height: 100%;"></div>
 <script type="text/javascript">
@@ -27,6 +27,7 @@
     }
     var videoUrl =getUrlParam('videourl');
     var hls=getUrlParam('hls');
+    var live=getUrlParam('live');
     var videoObject = {
         container: 'video',
         variable:'player',
@@ -34,6 +35,9 @@
     };
     if(hls!=null){
         videoObject['html5m3u8']=true;
+    }
+    if(live){
+        videoObject['live'] = true;
     }
     var player=new chplayer(videoObject);
 </script>
