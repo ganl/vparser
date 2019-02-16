@@ -94,7 +94,7 @@
 		},
 		//全局变量/变量类型：Array/功能：右键菜单：[菜单标题,类型(link:链接，default:灰色，function：调用函数，javascript:调用js函数),执行内容(包含链接地址，函数名称),[line(间隔线)]]
 		contextMenu: [
-			['chplayer', 'link', 'http://www.chplayer.com'],
+			['austgl', 'link', 'http://www.austgl.com'],
 			['v1.0', 'default'],
 			['播放视频', 'function', 'play', 'line'],
 			['暂停视频', 'function', 'pause'],
@@ -116,7 +116,7 @@
 			['010', 'Ajax.status:[error]']
 		],
 		//全局变量/变量类型：String/功能：定义logo
-		logo: 'chplayer',
+		logo: 'ch',
 		//全局变量/变量类型：Boolean/功能：是否加载了播放器
 		loaded: false,
 		//全局变量/变量类型：计时器/功能：监听视频加载出错的状态
@@ -786,7 +786,7 @@
 			this.getByElement(pauseCenterID).innerHTML = this.newCanvas(pauseCenterID, 80, 80); //构建中间暂停按钮
 			this.getByElement(loadingID).innerHTML = this.newCanvas(loadingID, 60, 60); //构建中间缓冲时显示的图标
 			this.getByElement(errorTextID).innerHTML = this.language['error']; //构建错误时显示的文本框
-			this.getByElement(logoID).innerHTML = this.logo; //构建logo
+			this.getByElement(logoID).innerHTML = this.vars['logo'] || this.logo; //构建logo
 			//CB:Object：全局变量，将一些全局需要用到的元素统一放在CB对象里
 			var pd=this.PD;
 			this.CB = {
@@ -3316,7 +3316,7 @@
 						thisTemp.CB['timeText'].innerHTML = thisTemp.getNowDate();
 					}
 				};
-				this.timerTime = new this.timer(1000, timeFun);
+				this.timerTime = new timer(1000, timeFun);
 				//timerTime.start();
 			}
 			this.definition();
